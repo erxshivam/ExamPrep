@@ -348,6 +348,35 @@ const Login = () => {
               Continue with Google
 
             </button>
+            <div
+  style={{
+    textAlign: "center",
+    marginTop: "15px"
+  }}
+>
+
+  <span
+    style={{
+      color: "#666",
+      fontSize: "14px"
+    }}
+  >
+    Are you an admin?
+  </span>
+
+  <Link
+    to="/adlogin"
+    style={{
+      marginLeft: "8px",
+      color: "#7e22ce",
+      fontWeight: "600",
+      textDecoration: "none"
+    }}
+  >
+    Admin Login
+  </Link>
+
+</div>
 
             <div style={styles.checkbox}>
 
