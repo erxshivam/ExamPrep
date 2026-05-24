@@ -8,12 +8,12 @@ const UserHome = () => {
 
     const handlefetch = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/dashboard/exams/${examineId}`);
+            const response = await fetch(`https://examprep-9ld9.onrender.com/api/dashboard/exams/${examineId}`);
             if (!response.ok) throw new Error('Exams data not found');
             const result = await response.json();
             setData(result);
 
-            const res = await axios.get(`http://localhost:5000/api/dashboard/examinee-result/${examineId}`);
+            const res = await axios.get(`https://examprep-9ld9.onrender.com/api/dashboard/examinee-result/${examineId}`);
             setReslt(Array.isArray(res.data.message) ? res.data.message : [res.data.message]);
         } catch (error) {
             console.error('Error fetching dashboard data:', error);

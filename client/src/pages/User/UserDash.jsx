@@ -15,7 +15,7 @@ const UserDash = () => {
     useEffect(() => {
         const fetchExams = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/dashboard/exams/${userId}`);
+                const response = await fetch(`https://examprep-9ld9.onrender.com/api/dashboard/exams/${userId}`);
                 if (!response.ok) throw new Error('Server error while fetching exam details');
                 const data = await response.json();
                 setExamsData(data);

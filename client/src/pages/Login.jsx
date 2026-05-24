@@ -32,7 +32,7 @@ const Login = () => {
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/api/examinee/login",
+        "https://examprep-9ld9.onrender.com/api/examinee/login",
         data
       );
 
@@ -77,7 +77,7 @@ const Login = () => {
 
       // Send to backend
       const res = await axios.post(
-        "http://localhost:5000/api/examinee/google-login",
+        "https://examprep-9ld9.onrender.com/api/examinee/google-login",
         {
           name: user.displayName,
           email: user.email

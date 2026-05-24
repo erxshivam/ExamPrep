@@ -23,7 +23,7 @@ const AdminLogin = () => {
         e.preventDefault();
 
         const res = await axios.post(
-            'http://localhost:5000/api/admin/login',
+            'https://examprep-9ld9.onrender.com/api/admin/login',
             form
         );
 

@@ -14,7 +14,7 @@ const ContactA = () => {
   const fetchUserMessages = async () => {
     if (!userId) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/message/user/${userId}`);
+      const res = await axios.get(`https://examprep-9ld9.onrender.com/api/message/user/${userId}`);
       setMessages(res.data.message || []);
     } catch (err) {
       console.error('Error fetching user messages:', err);
@@ -31,7 +31,7 @@ const ContactA = () => {
     e.preventDefault();
     if (!question.trim()) return;
     try {
-      await axios.post('http://localhost:5000/api/message', { question, examineeId: userId });
+      await axios.post('https://examprep-9ld9.onrender.com/api/message', { question, examineeId: userId });
       setQuestion('');
       fetchUserMessages();
     } catch (err) {
@@ -43,7 +43,7 @@ const ContactA = () => {
     const newText = prompt('Edit your message:', currentText);
     if (newText === null || !newText.trim()) return;
     try {
-      await axios.put(`http://localhost:5000/api/message/edit/${id}`, {
+      await axios.put(`https://examprep-9ld9.onrender.com/api/message/edit/${id}`, {
         question: newText,
         role: 'user',
         userId
@@ -57,7 +57,7 @@ const ContactA = () => {
   const deleteByUser = async (id) => {
     if (!window.confirm('Delete this message?')) return;
     try {
-      await axios.put(`http://localhost:5000/api/message/delete/${id}`, {
+      await axios.put(`https://examprep-9ld9.onrender.com/api/message/delete/${id}`, {
         role: 'user',
         userId
       });
