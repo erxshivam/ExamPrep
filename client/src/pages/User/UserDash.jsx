@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router';
+import { Link, Outlet } from 'react-router-dom';
 
 const UserDash = () => {
     const [collapsed, setCollapsed] = useState(false);

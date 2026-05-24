@@ -1,5 +1,6 @@
-import react from "react";
+import React from "react";
 import "./App.css";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -20,6 +21,7 @@ import ExamResultsDeclaration from "./pages/Admin/ExamResultDeclaration";
 import AdminHome from "./pages/Admin/AdminHome";
 
 import UserDash from "./pages/User/UserDash";
+import UserHome from "./pages/User/UserHome";
 import ContactA from "./pages/User/ContactA";
 import MyExam from "./pages/User/MyExam";
 import Profile from "./pages/User/Profile";
@@ -55,15 +57,24 @@ function App() {
         </Route>
 
         {/* User Routes */}
-        <Route path="/userdash" element={<UserDash />} />
-        <Route path="/contact1" element={<ContactA />} />
-        <Route path="/myexam" element={<MyExam />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/getexam/:id" element={<GetExam />} />
-        <Route path="/chanpass" element={<Chanpass />} />
-        <Route path="/results" element={<Result />} />
+        <Route path="/userdash" element={<UserDash />}>
+          <Route index element={<UserHome />} />
+          <Route path="contact1" element={<ContactA />} />
+          <Route path="myexam" element={<MyExam />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="getexam/:id" element={<GetExam />} />
+          <Route path="chanpass" element={<Chanpass />} />
+          <Route path="results" element={<Result />} />
+        </Route>
 
-        {/* Fallback Route */}
+        {/* Extra Routes */}
+        <Route path="/examination" element={<Examination />} />
+        <Route path="/session" element={<Session />} />
+        <Route path="/subject" element={<Subject />} />
+        <Route path="/examineet" element={<Examinee />} />
+        <Route path="/questionbank" element={<QuestionBank />} />
+
+        {/* 404 Route */}
         <Route path="*" element={<Component />} />
 
       </Routes>
