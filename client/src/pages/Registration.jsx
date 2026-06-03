@@ -57,63 +57,70 @@ const Registration = () => {
 
   const styles = {
     page: {
-      height: '100vh',
+      minHeight: '100vh', // CHANGE: height se minHeight aur padding
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       background: 'linear-gradient(135deg, #4a3365ff, #ac66e9ff, #3c2e58ff)',
       fontFamily: 'Segoe UI, sans-serif',
+      padding: '20px', 
+      boxSizing: 'border-box'
     },
     card: {
-      width: '1050px',
-      height: 'auto',
+      width: '100%', // CHANGE: responsive width
+      maxWidth: '1050px',
+      minHeight: 'auto',
       display: 'flex',
+      flexWrap: 'wrap', // CHANGE: wrap on mobile
       borderRadius: '18px',
       overflow: 'hidden',
       boxShadow: '0 25px 60px rgba(0,0,0,0.35)',
       backgroundColor: '#fff',
     },
     leftPanel: {
-      flex: 0.7,
+      flex: '1 1 350px', // CHANGE: flexibility for mobile
       background: 'linear-gradient(135deg,#570c78ff, #593a78, #8b44d2ff)',
       color: '#fff',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: '1px',
+      padding: '40px 20px',
       textAlign: 'center',
+      position: 'relative', // CHANGE: contain absolute circles
     },
-     abstractCircles: {
-            position: 'absolute',
-            borderRadius: '50%',
-            background: 'rgba(239, 104, 248, 0.15)',
-            zIndex: 0,
-        },
-        bigCircle: {
-            width: '140px',
-            height: '140px',
-            top: '18%',
-            left: '10%',
-        },
-        smallCircle: {
-            width: '90px',
-            height: '90px',
-            bottom: '12%',
-            right: '65%',
-        },
+    abstractCircles: {
+      position: 'absolute',
+      borderRadius: '50%',
+      background: 'rgba(239, 104, 248, 0.15)',
+      zIndex: 0,
+    },
+    bigCircle: {
+      width: '140px',
+      height: '140px',
+      top: '18%',
+      left: '10%',
+    },
+    smallCircle: {
+      width: '90px',
+      height: '90px',
+      bottom: '12%',
+      right: '15%', // Adjusted slightly to stay in frame
+    },
     welcomeText: {
       fontSize: '28px',
       fontWeight: '700',
       marginBottom: '15px',
+      zIndex: 1, // CHANGE: keep text above circles
     },
     subText: {
       fontSize: '15px',
       opacity: 0.9,
       maxWidth: '280px',
+      zIndex: 1, // CHANGE: keep text above circles
     },
     rightPanel: {
-      flex: 1,
+      flex: '1 1 350px', // CHANGE: flexibility for mobile
       backgroundColor: '#fff',
       display: 'flex',
       justifyContent: 'center',
@@ -126,23 +133,26 @@ const Registration = () => {
     },
     row: {
       display: 'flex',
+      flexWrap: 'wrap', // CHANGE: allows inputs to stack on narrow phones
       gap: '10px',
       marginBottom: '10px',
     },
     input: {
-      flex: 1,
+      flex: '1 1 200px', // CHANGE: allows taking full width if container is small
       padding: '10px',
       border: '1px solid #ccc',
       borderRadius: '6px',
       fontSize: '14px',
       outline: 'none',
+      boxSizing: 'border-box', // CHANGE: prevents padding from breaking width
     },
     select: {
-      flex: 1,
+      flex: '1 1 200px',
       padding: '10px',
       border: '1px solid #ccc',
       borderRadius: '6px',
       fontSize: '14px',
+      boxSizing: 'border-box',
     },
     textArea: {
       width: '100%',
@@ -152,25 +162,24 @@ const Registration = () => {
       fontSize: '14px',
       resize: 'vertical',
       marginBottom: '10px',
+      boxSizing: 'border-box',
     },
-     heading: {
-            fontSize: '40px',
-            marginBottom: '2px',
-            fontWeight: '600',
-           display: 'inline-block',
-           
-            borderBottom:'4px solid' ,
-            color:'#4a0b65ff',
-            
-        },
+    heading: {
+      fontSize: '32px', // Slightly reduced for mobile fit
+      marginBottom: '20px',
+      fontWeight: '600',
+      display: 'inline-block',
+      borderBottom: '4px solid',
+      color: '#4a0b65ff',
+    },
     submitBtn: {
       width: '100%',
-      padding: '10px',
+      padding: '12px',
       border: 'none',
       borderRadius: '6px',
       background: 'linear-gradient(to right, #3a0451ff, #7827c0ff)',
       color: '#fff',
-      fontSize: '15px',
+      fontSize: '16px',
       fontWeight: '600',
       cursor: 'pointer',
       marginTop: '10px',
@@ -183,8 +192,8 @@ const Registration = () => {
 
         {/* Left Panel */}
         <div style={styles.leftPanel}>
-           <div style={{ ...styles.abstractCircles, ...styles.bigCircle }} />
-                    <div style={{ ...styles.abstractCircles, ...styles.smallCircle }} />
+          <div style={{ ...styles.abstractCircles, ...styles.bigCircle }} />
+          <div style={{ ...styles.abstractCircles, ...styles.smallCircle }} />
           <div style={styles.welcomeText}>Welcome to ExamPrep</div>
           <div style={styles.subText}>
             Register now and unlock your personalized dashboard to manage exams, view results, and access all your academic details in one place.
@@ -194,10 +203,10 @@ const Registration = () => {
         {/* Right Panel */}
         <div style={styles.rightPanel}>
           <form onSubmit={handleSubmit} style={styles.formBox}>
-           <div style={{textAlign:'center'}}>
-                            <div className='border-b-2' style={styles.heading}>Registration Page</div>
-                        </div>
-                <br />
+            <div style={{ textAlign: 'center' }}>
+              <div className='border-b-2' style={styles.heading}>Registration Page</div>
+            </div>
+            
             <div style={styles.row}>
               <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} required style={styles.input} />
               <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required style={styles.input} />
